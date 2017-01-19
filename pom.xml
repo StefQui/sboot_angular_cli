@@ -27,6 +27,8 @@
 		<java.version>1.8</java.version>
 		<orika-core.version>1.4.6</orika-core.version>
 		<lombok.version>1.16.10</lombok.version>
+		<metrics-spring.version>3.1.3</metrics-spring.version>
+		<javax.inject.version>1</javax.inject.version>
 	</properties>
 
 	<dependencies>
@@ -58,6 +60,11 @@
 			<artifactId>spring-boot-starter-actuator</artifactId>
 		</dependency>
 
+		<dependency>
+			<groupId>javax.inject</groupId>
+			<artifactId>javax.inject</artifactId>
+			<version>${javax.inject.version}</version>
+		</dependency>
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
@@ -96,6 +103,25 @@
 		<dependency>
 			<groupId>com.zaxxer</groupId>
 			<artifactId>HikariCP</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.ryantenney.metrics</groupId>
+			<artifactId>metrics-spring</artifactId>
+			<version>${metrics-spring.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>com.codahale.metrics</groupId>
+					<artifactId>metrics-annotation</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>com.codahale.metrics</groupId>
+					<artifactId>metrics-core</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>com.codahale.metrics</groupId>
+					<artifactId>metrics-healthchecks</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 
 	</dependencies>

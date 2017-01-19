@@ -1,9 +1,14 @@
 <h1>
-  {{title}}
+  Yes, Container {{title}}
 </h1>
 <nav>
   <a routerLink="/" routerLinkActive="active">Home</a>
-  <a routerLink="/page1" routerLinkActive="active">Page1</a>
+  <a routerLink="/page1" routerLinkActive="true">Page1</a>
+  <a routerLink="/page2" routerLinkActive="true">Page2</a>
+  <a href="/api/authors">Authors</a>
 </nav>
+<p>Content:</p>
+<div class="byellow">
 <router-outlet></router-outlet>
+</div>
 

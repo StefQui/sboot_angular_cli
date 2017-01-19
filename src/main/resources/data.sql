@@ -9,3 +9,6 @@ INSERT INTO "users"("id","username", "password", "enabled") VALUES (5, 'martin',
 INSERT INTO "role"("id", "rolename", "user_id") VALUES (1, 'ROLE_ADMIN', 1);
 INSERT INTO "role"("id", "rolename", "user_id") VALUES (2, 'ROLE_USER', 1);
 INSERT INTO "role"("id", "rolename", "user_id") VALUES (3, 'ROLE_USER', 2);
+-- author
+INSERT INTO "author"("id", "name") VALUES (1, 'Pierre');
+INSERT INTO "author"("id", "name") VALUES (2, 'Jean');
