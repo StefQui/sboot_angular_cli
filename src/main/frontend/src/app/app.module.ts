@@ -9,21 +9,36 @@ import { Page2Component } from './page2/page2.component';
 import {FirstRoutingModule} from "./routing/first-routing.module";
 import { HomeComponent } from './home/home.component';
 
+import { AlertModule } from 'ng2-bootstrap';
+import {NgRestService} from "./rest/ng-rest";
+import { AuthorFormComponent } from './author/author-form/author-form.component';
+import {LodashModule} from "ng2-lodash/ng2-lodash";
+import {ToasterModule} from "angular2-toaster";
+import { AuthorListComponent } from './author/author-list/author-list.component';
+import { ConfirmDialogComponent } from './util/confirm-dialog/confirm-dialog.component';
+import {ModalModule} from "ng2-bootstrap/modal";
+
 @NgModule({
   declarations: [
     AppComponent,
     Page1Component,
     Page2Component,
     HomeComponent,
-    HomeComponent
+    AuthorFormComponent,
+    AuthorListComponent,
+    ConfirmDialogComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
-    FirstRoutingModule
+    FirstRoutingModule,
+    AlertModule.forRoot(),
+    ToasterModule,
+    ModalModule.forRoot(),
+    LodashModule
   ],
-  providers: [],
+  providers: [NgRestService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -25,6 +25,7 @@ import java.util.Optional;
  * REST controller for managing Book.
  */
 @RestController
+@CrossOrigin
 @RequestMapping("/api")
 public class BookResource {
 

@@ -1,14 +1,24 @@
-<h1>
-  Yes, Container {{title}}
-</h1>
-<nav>
-  <a routerLink="/" routerLinkActive="active">Home</a>
-  <a routerLink="/page1" routerLinkActive="true">Page1</a>
-  <a routerLink="/page2" routerLinkActive="true">Page2</a>
-  <a href="/api/authors">Authors</a>
-</nav>
-<p>Content:</p>
-<div class="byellow">
-<router-outlet></router-outlet>
-</div>
+<div class="container">
+  <div class="jumbotron">
+    <h1>
+      Yes, Container {{title}}
+    </h1>
+  </div>
+  <alert type="success">Hello</alert>
 
+  <nav>
+    <a routerLink="/" routerLinkActive="active">Home</a>
+    &nbsp;&nbsp;|&nbsp;&nbsp;
+    <a routerLink="/page1" routerLinkActive="true">Page1</a>
+    &nbsp;&nbsp;|&nbsp;&nbsp;
+    <a routerLink="/page2" routerLinkActive="true">Page2</a>
+    &nbsp;&nbsp;|&nbsp;&nbsp;
+    <a routerLink="/authorList" routerLinkActive="true">Authors list</a>
+    &nbsp;&nbsp;|&nbsp;&nbsp;
+    <a href="/api/authors">Authors</a>
+  </nav>
+  <br/>
+  <div class="byellow">
+    <router-outlet></router-outlet>
+  </div>
+</div>

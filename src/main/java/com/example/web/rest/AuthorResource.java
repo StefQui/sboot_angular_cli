@@ -25,6 +25,7 @@ import java.util.Optional;
  * REST controller for managing Author.
  */
 @RestController
+@CrossOrigin
 @RequestMapping("/api")
 public class AuthorResource {
 
