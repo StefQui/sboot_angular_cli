@@ -45,7 +45,14 @@ export class NgRestService {
 
   removeAuthor (id:string): Observable<Author[]> {
     return this.http.delete(`${this.authorsUrl}/${id}`) // ...using put request
-      .map((res:Response) => res.json()) // ...and calling .json() on the response to return data
-      .catch((error:any) => Observable.throw(error.json().error || 'Server error')); //...errors if any
+      .map((res:Response) => {
+        console.log('result = ' + res);
+        console.log('result2 = ' + res.toString());
+        return null;
+      }) // ...and calling .json() on the response to return data
+      .catch((error:any) => {
+        console.log('result3 = ' + error);
+        return Observable.throw(error.json() || 'Server error')
+      }); //...errors if any
   }
 }

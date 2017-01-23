@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit, ViewChild, Output, EventEmitter} from '@angular/core';
 import {ModalDirective} from "ng2-bootstrap";
 import {Author} from "../../model/author";
 
@@ -14,13 +14,23 @@ export class ConfirmDialogComponent implements OnInit {
   private author: Author;
 
   @ViewChild('mymodal') public theModal:ModalDirective;
+  @Output() onConfirm = new EventEmitter<Author>();
 
-  showConfirmFor(author) {
+  showConfirmFor(author: Author) {
     this.author = author;
     this.theModal.show();
   }
 
   ngOnInit() {
+  }
+
+  confirm() {
+    this.theModal.hide();
+    this.onConfirm.emit(this.author);
+  }
+
+  cancel() {
+    this.theModal.hide();
   }
 
 }

@@ -5,6 +5,8 @@ import {Author} from "../../model/author";
 import {NgRestService} from "../../rest/ng-rest";
 import {ModalDirective} from "ng2-bootstrap/ng2-bootstrap";
 import {ConfirmDialogComponent} from "../../util/confirm-dialog/confirm-dialog.component";
+import {AuthorFormComponent} from "../author-form/author-form.component";
+import {AuthorFormDialogComponent} from "../author-form-dialog/author-form-dialog.component";
 
 @Component({
   templateUrl: './author-list.component.html',
@@ -19,6 +21,7 @@ export class AuthorListComponent implements OnInit {
   private toasterService: ToasterService;
 
   @ViewChild('confirmModal') public confirm:ConfirmDialogComponent;
+  @ViewChild('editModal') public editDialog:AuthorFormDialogComponent;
 
   constructor(
     private ngRestService: NgRestService,
@@ -48,8 +51,17 @@ export class AuthorListComponent implements OnInit {
     this.selectedAuthor = author;
   }
 
+  editInPopup(author: Author): void {
+    this.selectedAuthor = author;
+    this.editDialog.showEditFor(author);
+  }
+
   createAuthor() {
     this.edit(new Author(null, null));
+  }
+
+  createAuthorInPopup() {
+    this.editInPopup(new Author(null, null));
   }
 
   onUpdated(author: Author) {
@@ -64,6 +76,18 @@ export class AuthorListComponent implements OnInit {
 
   delete(author: Author) {
     this.confirm.showConfirmFor(author);
+  }
+
+  onConfirmDelete(author: Author) {
+    console.log('confirmed ' + author);
+    this.ngRestService.removeAuthor(author.id.toString())
+      .subscribe(authors => {
+          this.loadComments();
+        }, //Bind to view
+        err => {
+          // Log errors if any
+          console.log(err);
+        })
   }
 
   ngOnInit() {

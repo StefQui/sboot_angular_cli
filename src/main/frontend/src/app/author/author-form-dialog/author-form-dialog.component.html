@@ -1,21 +1,23 @@
-<div class="modal fade" bsModal #mymodal="bs-modal" [config]="{backdrop: 'static'}"
+<div class="modal fade" bsModal #myEditmodal="bs-modal" [config]="{backdrop: 'static'}"
      tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-sm">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title pull-left">Static modal</h4>
+        <h4 class="modal-title pull-left">Edit author</h4>
         <button type="button" class="close pull-right" aria-label="Close" (click)="mymodal.hide()">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
         <div *ngIf="author">
-        Remove {{author.name}}
-        Click <b>&times;</b> to close modal.
-          <button class="btn btn-success"
-                  (click)="confirm(); $event.stopPropagation()">Confirmer la suppression</button>
-          <button class="btn btn-primary"
-                  (click)="cancel(); $event.stopPropagation()">Annuler</button>
+          Edit
+          Click <b>&times;</b> to close modal.<br/>
+
+
+          <author-form [author1]="author"
+                       (onUpdated)="onPopupUpdated($event)"
+                       (onCancel)="onCancel()"></author-form>
+
 
         </div>
       </div>

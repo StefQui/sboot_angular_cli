@@ -2,7 +2,14 @@
   List of autors works!
   <h2>Hi page 2</h2>
   <toaster-container></toaster-container>
-  <confirm-dialog #confirmModal></confirm-dialog>
+  <confirm-dialog
+    #confirmModal
+    (onConfirm)="onConfirmDelete($event)"></confirm-dialog>
+  <author-form-dialog
+    #editModal
+    [author2]="selectedAuthor"
+                    (onUpdated)="onUpdated($event)"
+                    (cancel)="onCancel()"></author-form-dialog>
   <table class="table table-bordered">
     <tr *ngFor='let author of authors; let i = index'>
       <td>
@@ -19,6 +26,10 @@
                 (click)="edit(author); $event.stopPropagation()">Edit</button>
       </td>
       <td>
+        <button class="btn btn-primary"
+                (click)="editInPopup(author); $event.stopPropagation()">Edit in dialog</button>
+      </td>
+      <td>
         <button class="btn btn-danger delete"
                 (click)="delete(author); $event.stopPropagation()">X</button>
       </td>
@@ -26,6 +37,8 @@
   </table>
   <button class="btn btn-primary"
           (click)="createAuthor(); $event.stopPropagation()">Create</button>
+  <button class="btn btn-primary"
+          (click)="createAuthorInPopup(); $event.stopPropagation()">Create in popup</button>
 
   <div *ngIf="selectedAuthor">
     <h2>

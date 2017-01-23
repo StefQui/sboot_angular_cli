@@ -17,6 +17,7 @@ import {ToasterModule} from "angular2-toaster";
 import { AuthorListComponent } from './author/author-list/author-list.component';
 import { ConfirmDialogComponent } from './util/confirm-dialog/confirm-dialog.component';
 import {ModalModule} from "ng2-bootstrap/modal";
+import { AuthorFormDialogComponent } from './author/author-form-dialog/author-form-dialog.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import {ModalModule} from "ng2-bootstrap/modal";
     HomeComponent,
     AuthorFormComponent,
     AuthorListComponent,
-    ConfirmDialogComponent
+    ConfirmDialogComponent,
+    AuthorFormDialogComponent
   ],
   imports: [
     BrowserModule,
