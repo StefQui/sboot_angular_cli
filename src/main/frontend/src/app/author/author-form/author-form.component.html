@@ -1,0 +1,11 @@
+<div *ngIf="author">
+  <h2>{{author.name}} details!</h2>
+  <div>
+    <label>id: </label>{{author.id}}</div>
+  <div>
+    <label>name: </label>
+    <input [(ngModel)]="author.name" placeholder="name" />
+  </div>
+  <button class="btn btn-primary" (click)="cancel()">Cancel</button>
+  <button class="btn btn-primary" (click)="update(author)">Save</button>
+</div>

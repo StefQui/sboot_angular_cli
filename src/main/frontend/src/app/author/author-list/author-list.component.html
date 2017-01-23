@@ -1,0 +1,41 @@
+<div>
+  List of autors works!
+  <h2>Hi page 2</h2>
+  <toaster-container></toaster-container>
+  <confirm-dialog #confirmModal></confirm-dialog>
+  <table class="table table-bordered">
+    <tr *ngFor='let author of authors; let i = index'>
+      <td>
+        {{ i }}
+      </td>
+      <td>
+        Id:{{ author.id }}
+      </td>
+      <td>
+        {{ author.name }}
+      </td>
+      <td>
+        <button class="btn btn-primary"
+                (click)="edit(author); $event.stopPropagation()">Edit</button>
+      </td>
+      <td>
+        <button class="btn btn-danger delete"
+                (click)="delete(author); $event.stopPropagation()">X</button>
+      </td>
+    </tr>
+  </table>
+  <button class="btn btn-primary"
+          (click)="createAuthor(); $event.stopPropagation()">Create</button>
+
+  <div *ngIf="selectedAuthor">
+    <h2>
+      {{selectedAuthor.name | uppercase}} is my author
+    </h2>
+  </div>
+  <author-form [author1]="selectedAuthor"
+               (onUpdated)="onUpdated($event)"
+               (onCancel)="onCancel()"></author-form>
+
+  <br/>
+  {{authors | json}}
+</div>
